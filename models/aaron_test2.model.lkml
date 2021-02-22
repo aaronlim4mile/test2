@@ -1,7 +1,6 @@
 connection: "thelook"
 
-###LALALA
-##llll
+#testtt
 
 # include all the views
 include: "/views/**/*.view"
