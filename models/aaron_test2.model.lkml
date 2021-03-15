@@ -38,10 +38,22 @@ explore: inventory_items {
   }
 }
 
+explore: products {
+  join: distribution_centers {
+    type: left_outer
+    sql_on: ${products.distribution_center_id} = ${distribution_centers.id} ;;
+    relationship: many_to_one
+  }
+}
+
+explore: users {}
+
+
+
 explore: order_items {
   access_filter: {
-    field: distribution_centers.id
-    user_attribute: dc
+    field: products.category
+    user_attribute: product_category
   }
 
   join: users {
@@ -68,13 +80,3 @@ explore: order_items {
     relationship: many_to_one
   }
 }
-
-explore: products {
-  join: distribution_centers {
-    type: left_outer
-    sql_on: ${products.distribution_center_id} = ${distribution_centers.id} ;;
-    relationship: many_to_one
-  }
-}
-
-explore: users {}
